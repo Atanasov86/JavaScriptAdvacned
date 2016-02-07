@@ -3,38 +3,129 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+
 </head>
 <body>
-    <header>
-        <h1>Living Creatures</h1>
-    </header>
-    <section>
-        <article class="birds">
-            <h2 class="birds-heading">Birds</h2>
-            <ul class="birds-list">
-                <li class="bird">Nightingale</li>
-                <li class="bird">Owl</li>
-                <li class="bird">Hawk
-                    <ul>
-                        <li class="sub-bird">Black Hawk</li>
-                        <li class="sub-bird">Chicago Hawk</li>
-                    </ul>
-                </li>
-                <li id="eagle" class="bird">Eagle</li>
-                <li class="bird">Sparrow</li>
-                <li class="bird">Falcon</li>
-                <li class="bird">Blackbird</li>
-            </ul>
-        </article>
-        <article class="mammals">
-            <h2 class="mammal-heading">Mammals</h2>
-            <ol class="mammal-list">
-                <li id="dolphin" class="mammal">Dolphin</li>
-                <li class="mammal">Elephant</li>
-                <li class="mammal">Hyena</li>
-            </ol>
-        </article>
+<header>
+    <h1>Living Creatures</h1>
+</header>
+<section>
+    <article class="birds">
+        <h2 class="birds-heading">Birds</h2>
+        <ul class="birds-list">
+            <li class="bird">Nightingale</li>
+            <li class="bird">Owl</li>
+            <li class="bird">Hawk
+                <ul>
+                    <li class="sub-bird">Black Hawk</li>
+                    <li class="sub-bird">Chicago Hawk</li>
+                </ul>
+            </li>
+            <li id="eagle" class="bird">Eagle</li>
+            <li class="bird">Sparrow</li>
+            <li class="bird">Falcon</li>
+            <li class="bird">Blackbird</li>
+        </ul>
+    </article>
+    <article class="mammals">
+        <h2 class="mammal-heading">Mammals</h2>
+        <ol class="mammal-list">
+            <li id="dolphin" class="mammal">Dolphin</li>
+            <li class="mammal">Elephant</li>
+            <li class="mammal">Hyena</li>
+        </ol>
+    </article>
 
-    </section>
+</section>
+<script src="DOM-Manipulator.js">
+    var domModule = (function () {
+        var getElement = function (selector) {
+            return document.querySelector(selector);
+        };
+
+
+        function appendChild(element, child) {
+            if (!(element instanceof Element)) {
+                element = getElement(element);
+            }
+
+            if (!element) {
+                throw new ReferenceError("Parent element is invalid or could not be found.");
+            }
+
+            if (!(child instanceof Element)) {
+                child = getElement(child);
+            }
+
+            if (!child) {
+                throw new ReferenceError("Child element is invalid or could not be found.");
+            }
+
+            element.appendChild(child);
+        }
+
+        function removeChild(element, child) {
+
+            if (!(element instanceof Element)) {
+                element = getElement(element);
+            }
+
+            if (!element) {
+                throw new ReferenceError("Parent element is invalid or could not be found.");
+            }
+
+            if (!(child instanceof Element)) {
+                child = getElement(child);
+            }
+
+            if (!child) {
+                throw new ReferenceError("Child element is invalid or could not be found.");
+            }
+
+            element.removeChild(child);
+        }
+
+        function addHandler(element, eventType, eventHandler) {
+
+            if (!(element instanceof Element) && !Array.isArray(element)) {
+                element = retrieveElements(element);
+            }
+
+            if (!element) {
+                throw new ReferenceError("The element(s) requested could not be found.");
+            }
+
+            for (var i in element) {
+                element[i].addEventListener(eventType, eventHandler, false);
+            }
+
+        }
+
+        function retrieveElements(selector) {
+            return document.querySelectorAll(selector);
+        }
+
+        return {
+            appendChild: appendChild,
+            removeChild: removeChild,
+            addHandler: addHandler,
+            retrieveElements: retrieveElements
+        }
+
+    })();
+
+    var liElement = document.createElement("li");
+
+    domModule.appendChild(".birds-list", liElement);
+
+    domModule.removeChild("ul.birds-list", "li:first-child");
+
+    domModule.addHandler("li.bird", "click", function () {
+        alert("I'm a bird!")
+    });
+
+    var elements = domModule.retrieveElements(".bird");
+</script>
+
 </body>
 </html>
