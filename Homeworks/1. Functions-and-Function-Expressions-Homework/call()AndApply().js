@@ -19,3 +19,4 @@ printArgsInfo.call();
 printArgsInfo.call(null, undefined, "", 0, [], {});
 printArgsInfo.apply();
 printArgsInfo.apply(null, [undefined, "", 0, [], {}]);
+

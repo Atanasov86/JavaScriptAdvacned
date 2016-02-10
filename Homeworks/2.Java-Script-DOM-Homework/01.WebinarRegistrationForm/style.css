@@ -1,0 +1,42 @@
+body, p, h2, div, form {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    margin: 0 auto;
+    background-color: #FFF7F0;
+    width: 700px;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    margin-left: 250px;
+    font-size: 18px;
+}
+
+input {
+    width: 200px;
+    margin-left: 250px;
+}
+
+.checkbox {
+    width: 20px;
+}
+
+button {
+    width: 70px;
+    height: 20px;
+}
+
+button.registration {
+    margin-left: 250px;
+    width: 130px;
+}
+
+#invoice {
+    display: none;
+}

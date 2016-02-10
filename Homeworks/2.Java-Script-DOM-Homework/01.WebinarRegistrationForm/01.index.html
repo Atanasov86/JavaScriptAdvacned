@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webinar registration form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <h2>Регистрация за уебинар</h2>
+        <br action="">
+            <label>Име и фамилия:</label>
+            <input type="text" required/>
+
+            <label>Адрес:</label>
+            <input type="text" />
+
+            <label>Населено място:</label>
+            <input type="text" />
+
+            <label>Email:</label>
+            <input type="email" required/>
+
+            <label>Телефон</label>
+            <input type="tel" required/>
+
+            <label>Дата на семинара:</label>
+            <input type="date" required/>
+
+            <input class="checkbox" onchange="isChecked(this.checked)" type="checkbox"><span>Желая фактура</span></br>
+            <div id="invoice">
+                <label>Фирма/организация:</label>
+                <input type="text" required/>
+
+                <label>МОЛ:</label>
+                <input type="text" required/>
+
+                <label>ЕИК:</label>
+                <input type="text" required/>
+
+                <label>ИН по ДДС:</label>
+                <input type="text" required/>
+
+                <label>Адрес:</label>
+                <input type="text" required/>
+            </div>
+
+            <button class="registration" type="submit">Регистрирай се</button>
+            <button class="clear" type="reset">Изчисти</button>
+        </form>
+    </div>
+
+    <script>
+        function isChecked (isCheck) {
+            document.getElementById("invoice").style.display = "none";
+
+            if (isCheck) {
+                document.getElementById("invoice").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
