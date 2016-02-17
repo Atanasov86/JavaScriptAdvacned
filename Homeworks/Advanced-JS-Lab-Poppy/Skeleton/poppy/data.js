@@ -1,66 +1,70 @@
-var poppy = poppy || {};
-
-(function (scope){
+var Poppy = (function (){
     "use strict";
-    var Notification = (function () {
-
-        function Notification (title, message, position, type, closeButton, autoHide, timeout, callback) {
+    
+    if(!Object.prototype.extends) {
+        Object.prototype.extends = function (parent) {
+            this.prototype = Object.create(parent.prototype);
+            this.prototype.constructor = this;
+        }
+    }
+    
+    var Popup = (function () {
+        function Popup (type, title, message, position,  timeout, callback, autoHide, closeButton) {
             this._popupData = {
-                title: title,
-                message: message,
                 position: position,
                 type: type,
                 autoHide: autoHide,
                 timeout: timeout,
                 closeButton: closeButton,
+                title: title,
+                message: message,
                 callback: callback
             }
         }
 
-        return Notification;
-    });
+        return Popup;
+    })();
 
     var Success = (function () {
-
-        function Success (title, message) {
-            Notification.call(this, title, message, 'bottom-left', 'success', false, false);
+        function Success (type, title, message) {
+            Popup.call(this, type, title, message, 'bottomLeft', 10000, false, true, false);
         }
 
+        Success.extends(Popup);
         return Success;
     })();
 
     var Info = (function () {
-
-        function Info (title, message) {
-            Notification.call(this, title, message, 'top-left', 'info', true, false, 2000);
+        function Info (type, title, message) {
+            Popup.call(this, type, title, message, 'topLeft', 0, false, false, true);
         }
-
+        
+        Info.extends(Popup);
         return Info;
     })();
 
     var Error = (function () {
-
-        function Error (title, message) {
-            Notification.call(this, title, message, 'top-right', false, false);
+        function Error (type, title, message) {
+            Popup.call(this, type, title, message, 'topRight', 0, false, false, false);
         }
-
+        
+        Error.extends(Popup);
         return Error;
     })();
 
     var Warning = (function () {
-
-        function Warning (title, message, callback) {
-            Notification.call(this, title, message, 'bottom-right', 'warning', false, false, 0, callback)
+        function Warning (type, title, message, callback) {
+            Popup.call(this, type, title, message, 'bottomRight', 0, callback, false, false)
         }
 
+        Warning.extends(Popup);
         return Warning;
     })();
 
-    scope._models = {
+    return {
         Success: Success,
         Info: Info,
         Error: Error,
         Warning: Warning
     }
-
-})(poppy);
+})();
