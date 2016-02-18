@@ -1,3 +1,5 @@
+"use strict";
+
 function add(a) {
     var sum = a;
 

@@ -1,26 +1,34 @@
+"use strict";
+
 var Vector = (function () {
     function Vector(array) {
         if (!array || array.length === 0) {
-            throw new Error("Cannot instance Vector of an undefined or an empty array.")
+            throw new Error('Cannot instance Vector of an undefined or an empty array.')
         }
         this._array = array;
     }
 
     function isValidDimension(vector, otherVector) {
         if (vector._array.length !== otherVector._array.length) {
-            throw new Error("The dimensions of vector and other must always be the same.")
+            throw new Error('The dimensions of vector and other must always be the same.')
         }
     }
 
 
     Vector.prototype.add = function (otherVector) {
+        var dimensionOfVector,
+            sumOfVectors,
+            i;
+
         if (otherVector === undefined) {
             throw new Error("Cannot ")
         }
         isValidDimension(this, otherVector);
-        var dimensionOfVector = this._array.length;
-        var sumOfVectors = [];
-        for (var i = 0; i < dimensionOfVector; i++) {
+
+        dimensionOfVector = this._array.length;
+        sumOfVectors = [];
+
+        for (i = 0; i < dimensionOfVector; i++) {
             var sum = this._array[i] + otherVector._array[i];
             sumOfVectors.push(sum);
         }
@@ -29,10 +37,16 @@ var Vector = (function () {
     };
 
     Vector.prototype.subtract = function (otherVector) {
+        var dimensionOfVector,
+            subtractOfVectors,
+            i;
+
         isValidDimension(this, otherVector);
-        var dimensionOfVector = this._array.length;
-        var subtractOfVectors = [];
-        for (var i = 0; i < dimensionOfVector; i++) {
+
+        dimensionOfVector = this._array.length;
+        subtractOfVectors = [];
+
+        for (i = 0; i < dimensionOfVector; i++) {
             var subtract = this._array[i] - otherVector._array[i];
             subtractOfVectors.push(subtract);
         }
@@ -41,10 +55,14 @@ var Vector = (function () {
     };
 
     Vector.prototype.dot = function (otherVector) {
+        var dimensionOfVector,
+            sumOfProductsOfVectors,
+            i;
+
         isValidDimension(this, otherVector);
-        var dimensionOfVector = this._array.length;
-        var sumOfProductsOfVectors = 0;
-        for (var i = 0; i < dimensionOfVector; i++) {
+        dimensionOfVector = this._array.length;
+        sumOfProductsOfVectors = 0;
+        for (i = 0; i < dimensionOfVector; i++) {
             sumOfProductsOfVectors += this._array[i] * otherVector._array[i];
 
         }
@@ -53,9 +71,13 @@ var Vector = (function () {
     };
 
     Vector.prototype.norm = function () {
-        var dimensionOfVector = this._array.length;
-        var sumOfPoweredComponents = 0;
-        for (var i = 0; i < dimensionOfVector; i++) {
+        var dimensionOfVector,
+            sumOfPoweredComponents,
+            i;
+
+        dimensionOfVector = this._array.length;
+        sumOfPoweredComponents = 0;
+        for (i = 0; i < dimensionOfVector; i++) {
             sumOfPoweredComponents += Math.pow(this._array[i], 2);
         }
 
@@ -64,7 +86,7 @@ var Vector = (function () {
 
 
     Vector.prototype.toString = function () {
-        return "(" + this._array.join(", ") + ")";
+        return '(' + this._array.join(", ") + ')';
 
     };
 

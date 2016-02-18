@@ -1,10 +1,15 @@
+'use strict';
+
 function printArgsInfo() {
+    var i,
+        typeOfArgs;
+    
     if (arguments.length === 0) {
         console.log('No arguments');
-    }
-
-    for (var i in arguments) {
-        var typeOfArgs = "";
+    }    
+    
+    for (i in arguments) {
+        typeOfArgs = "";
         if (arguments[i] instanceof (Array)) {
             typeOfArgs = 'array';
         } else {

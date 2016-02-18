@@ -1,3 +1,5 @@
+"use strict";
+
 function Person(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -16,7 +18,7 @@ function Person(firstName, lastName) {
 
 }
 
-var person = new Person("Peter", "Jackson");
+var person = new Person('Peter', 'Jackson');
 
 // Getting values
 console.log(person.firstName);

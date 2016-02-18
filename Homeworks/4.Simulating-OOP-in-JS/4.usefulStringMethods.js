@@ -1,9 +1,12 @@
+"use strict";
+
 String.prototype.startsWith = function (substring) {
     if (substring.length > this.length) {
         return false;
     }
+    var i;
 
-    for (var i in substring) {
+    for (i in substring) {
         if (this[i] !== substring[i]) {
             return false;
         }
@@ -17,7 +20,9 @@ String.prototype.endsWith = function (substring) {
         return false;
     }
 
-    for (var i = substring.length - 1, j = this.length - 1; i >= 0; i--, j--) {
+    var i, j;
+
+    for (i = substring.length - 1, j = this.length - 1; i >= 0; i--, j--) {
         if (this[j] !== substring[i]) {
             return false;
         }
@@ -27,12 +32,14 @@ String.prototype.endsWith = function (substring) {
 };
 
 String.prototype.left = function (count) {
-    var result = "";
+    var result = '',
+        i;
+
     if (count > this.length) {
         return this.toString();
     }
 
-    for (var i = 0; i < count; i++){
+    for (i = 0; i < count; i++){
         result+= this[i];
     }
 
@@ -40,12 +47,15 @@ String.prototype.left = function (count) {
 };
 
 String.prototype.right = function (count) {
-    var result = "";
+    var result = '',
+        i,
+        j;
+
     if (count > this.length) {
         return this.toString();
     }
 
-    for (var i = 0, j = this.length - 1; i < count; i++,j--) {
+    for (i = 0, j = this.length - 1; i < count; i++,j--) {
         result = this[j] + result;
     }
 
@@ -53,9 +63,11 @@ String.prototype.right = function (count) {
 };
 
 String.prototype.padLeft = function (count, character) {
-    character = character || " ";
-    var result = this.toString();
-    for (var i = 0; i < count; i++){
+    character = character || ' ';
+    var result = this.toString(),
+        i;
+
+    for (i = 0; i < count; i++){
         result = character + result;
     }
 
@@ -64,8 +76,10 @@ String.prototype.padLeft = function (count, character) {
 
 String.prototype.padRight = function (count, character) {
     character = character || " ";
-    var result = this.toString();
-    for (var i = 0; i < count; i++){
+    var result = this.toString(),
+        i;
+
+    for (i = 0; i < count; i++){
         result += character;
     }
 
@@ -73,8 +87,10 @@ String.prototype.padRight = function (count, character) {
 };
 
 String.prototype.repeat = function (count) {
-    var result = "";
-    for (var i = 0; i < count; i++) {
+    var result = "",
+        i;
+
+    for (i = 0; i < count; i++) {
         result += this.toString();
     }
 

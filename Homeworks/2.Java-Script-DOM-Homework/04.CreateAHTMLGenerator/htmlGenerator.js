@@ -1,21 +1,32 @@
+"use strict";
+
 var HTMLGen = (function (){
     function createParagraph (id, text) {
-        var element = document.getElementById(id);
-        var paragraph = document.createElement('p');
+        var element,
+            paragraph;
+
+        element = document.getElementById(id);
+        paragraph = document.createElement('p');
         paragraph.innerText = text;
         element.appendChild(paragraph);
     }
 
     function createDiv (id, divClass) {
-        var element = document.getElementById(id);
-        var div = document.createElement('div');
+        var element,
+            div;
+
+        element = document.getElementById(id);
+        div = document.createElement('div');
         div.className = divClass;
         element.appendChild(div);
     }
 
     function createLink (id, text, url) {
-        var element = document.getElementById(id);
-        var link = document.createElement('a');
+        var element,
+            link;
+
+        element = document.getElementById(id);
+        link = document.createElement('a');
         link.href = url;
         link.innerText = text;
         element.appendChild(link);

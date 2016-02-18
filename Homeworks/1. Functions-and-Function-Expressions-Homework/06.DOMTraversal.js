@@ -1,4 +1,6 @@
-var selector = ".birds";
+"use strict";
+
+var selector = '.birds';
 
 function traverse (selector) {
     var elements = document.querySelector(selector);

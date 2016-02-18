@@ -1,14 +1,23 @@
+"use strict";
+
 var specialConsole = (function () {
     function replaceParams(message, parameters) {
-        var pattern = /{(\d+)}/g;
+        var pattern,
+            match;
 
-        var match = pattern.exec(message);
+        pattern = /{(\d+)}/g;
+
+        match = pattern.exec(message);
 
         while (match) {
-            var placeholder = match[0];
-            var index = parseInt(match[1]);
+            var placeholder,
+                index,
+                replacement;
 
-            var replacement = parameters[index];
+            placeholder = match[0];
+            index = parseInt(match[1]);
+
+            replacement = parameters[index];
 
             if (replacement === undefined) {
                 writeError("Incorrect number of parameters provided!");

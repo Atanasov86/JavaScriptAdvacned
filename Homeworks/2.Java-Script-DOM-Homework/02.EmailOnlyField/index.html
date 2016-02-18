@@ -16,19 +16,8 @@
         <div class="msg"></div>
         <button type="submit" onclick="validate()">Validate</button>
     </div>
-    <script>
-        function validate () {
-            var inputValue = document.getElementsByTagName('input')[0].value;
-            var regex = /[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
-            var element = document.getElementsByClassName('msg')[0];
-            element.innerText = inputValue;
+    <script src="validateEmail.js">
 
-            if (regex.test(inputValue)) {
-                element.style.backgroundColor = "green";
-            } else {
-                element.style.backgroundColor = "red";
-            }
-        }
     </script>
 </body>
 </html>

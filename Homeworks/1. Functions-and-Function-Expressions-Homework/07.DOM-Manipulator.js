@@ -1,4 +1,7 @@
+"use strict";
+
 var domModule = (function () {
+
     var getElement = function (selector) {
         return document.querySelector(selector);
     };
@@ -10,7 +13,7 @@ var domModule = (function () {
         }
 
         if (!element) {
-            throw new ReferenceError("Parent element is invalid or could not be found.");
+            throw new ReferenceError('Parent element is invalid or could not be found.');
         }
 
         if (!(child instanceof Element)) {
@@ -18,7 +21,7 @@ var domModule = (function () {
         }
 
         if (!child) {
-            throw new ReferenceError("Child element is invalid or could not be found.");
+            throw new ReferenceError('Child element is invalid or could not be found.');
         }
 
         element.appendChild(child);
@@ -31,7 +34,7 @@ var domModule = (function () {
         }
 
         if (!element) {
-            throw new ReferenceError("Parent element is invalid or could not be found.");
+            throw new ReferenceError('Parent element is invalid or could not be found.');
         }
 
         if (!(child instanceof Element)) {
@@ -46,16 +49,17 @@ var domModule = (function () {
     }
 
     function addHandler(element, eventType, eventHandler) {
+        var i;
 
         if (!(element instanceof Element) && !Array.isArray(element)) {
             element = retrieveElements(element);
         }
 
         if (!element) {
-            throw new ReferenceError("The element(s) requested could not be found.");
+            throw new ReferenceError('The element(s) requested could not be found.');
         }
 
-        for (var i in element) {
+        for (i in element) {
             element[i].addEventListener(eventType, eventHandler, false);
         }
 
@@ -74,14 +78,14 @@ var domModule = (function () {
 
 })();
 
-var liElement = document.createElement("li");
+var liElement = document.createElement('li');
 
-domModule.appendChild(".birds-list", liElement);
+domModule.appendChild('.birds-list', liElement);
 
-domModule.removeChild("ul.birds-list", "li:first-child");
+domModule.removeChild('ul.birds-list', 'li:first-child');
 
-domModule.addHandler("li.bird", "click", function () {
-    alert("I'm a bird!")
+domModule.addHandler('li.bird', 'click', function () {
+    alert('I\'m a bird!')
 });
 
 var elements = domModule.retrieveElements(".bird");

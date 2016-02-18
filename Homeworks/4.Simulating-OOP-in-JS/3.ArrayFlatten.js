@@ -1,7 +1,11 @@
+"use strict";
+
 Array.prototype.flatten = function () {
-    var arr = [];
+    var arr = [],
+        i;
+
     function getElements (array) {
-        for (var i in array) {
+        for (i in array) {
             if (Array.isArray(array[i])) {
                 getElements(array[i]);
             } else if (typeof array[i] != "function") {
@@ -9,7 +13,6 @@ Array.prototype.flatten = function () {
             }
         }
     }
-
 
     getElements(this);
 

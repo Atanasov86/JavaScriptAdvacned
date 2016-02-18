@@ -1,13 +1,17 @@
+"use strict";
+
 Object.prototype.extend = function (properties) {
     function f() {
     };
     f.prototype = Object.create(this);
-    for (var prop in properties) {
+    var prop;
+
+    for (prop in properties) {
         f.prototype[prop] = properties[prop];
     }
     f.prototype._super = this;
     return new f();
-}
+};
 
 
 var shapeModule = (function () {
@@ -19,7 +23,7 @@ var shapeModule = (function () {
         toString: function () {
             return 'Color: ' + this._color;
         }
-    }
+    };
 
     var circle = shape.extend({
         init: function init (centerX, centerY, radius, color){
@@ -88,7 +92,7 @@ var shapeModule = (function () {
             return  "Segment: " + "Point A(" + this._Ax + ", " + this._Ay + "), "
             + "Point B(" + this._Bx + ", " + this._By + "), " + this._super.toString();
         }
-    })
+    });
  
 
     return {
