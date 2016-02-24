@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Tremolo;
+    src: url(../tremolo-flaw.regular.ttf);
+}
+#wrapper {
+    font-family: Tremolo, Arial, "Segoe Script";
+    font-size: 20px;
+    margin: 0 auto;
+    width: 800px;
+    border: 2px solid black;
+}
+
+#container h1 {
+    text-align: center;
+}
+
+section {
+    border: 2px solid grey;
+    margin: 10px 10px;
+    padding: 15px 10px;
+}
+
+ul > li {
+    list-style: none;
+    margin: 10px 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+h2 {
+    margin: 5px 20px;
+    text-align: right;
+}
+
+li > div {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    width: 95%;
+}
+
+.itemInput, #itemButton{
+    position: relative;
+    left: 545px;
+}
+
+#form-section {
+    margin: 11px 10px;
+}
+
+#checked {
+    background-color: #90EE90;
+    text-decoration: line-through;
+}
